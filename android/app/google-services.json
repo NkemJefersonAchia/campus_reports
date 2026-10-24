@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889904093846",
+    "project_id": "mobile-application-dev-9ff56",
+    "storage_bucket": "mobile-application-dev-9ff56.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889904093846:android:9d0bc01f1d8d24926840b7",
+        "android_client_info": {
+          "package_name": "com.alu.campus_reports"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxqrzP_OgRAiYNoLQt9WLH60_YXV7ZsRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
