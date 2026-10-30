@@ -4,12 +4,15 @@ service firebase.storage {
   match /b/{bucket}/o {
     // Incident photo uploads
     match /incidents/{userId}/{allPaths=**} {
-      // Only authenticated users can upload to their own folder
-      allow read: if request.auth != null;
+      allow read: if request.auth != null
+        && request.auth.token.email_verified;
       allow write: if request.auth != null
+        && request.auth.token.email_verified
         && request.auth.uid == userId
-        && request.resource.size < 5 * 1024 * 1024  // 5MB limit
+        && request.resource.size < 5 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
+      allow delete: if request.auth != null
+        && request.auth.uid == userId;
     }
   }
 }
