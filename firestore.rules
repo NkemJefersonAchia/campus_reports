@@ -3,20 +3,25 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper: check if user is authenticated and email verified
     function isAuthenticated() {
       return request.auth != null && request.auth.token.email_verified;
     }
 
-    // Helper: check if user is staff
     function isStaff() {
       return isAuthenticated() &&
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'staff';
     }
 
-    // Helper: check if user owns the document
     function isOwner(userId) {
       return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidIncident() {
+      let data = request.resource.data;
+      return data.title is string && data.title.size() >= 5 && data.title.size() <= 80
+          && data.description is string && data.description.size() >= 20
+          && data.category is string
+          && data.location is string;
     }
 
     // Users collection
@@ -31,7 +36,8 @@ service cloud.firestore {
     match /incidents/{incidentId} {
       allow read: if isAuthenticated();
       allow create: if isAuthenticated() &&
-        request.resource.data.reporterId == request.auth.uid;
+        request.resource.data.reporterId == request.auth.uid &&
+        isValidIncident();
       allow update: if isAuthenticated() && (
         (resource.data.reporterId == request.auth.uid && resource.data.status == 'Submitted') ||
         isStaff()
