@@ -24,7 +24,7 @@ A Flutter mobile application for reporting and managing campus incidents at Afri
 1. Clone the repository
 2. Run `flutter pub get`
 3. Configure Firebase using FlutterFire CLI
-4. Run `flutter run`
+4. Run `flutter run --no-enable-impeller`
 
 ## Project Structure
 
@@ -39,3 +39,16 @@ lib/
 ## License
 
 This project is part of the ALU Mobile Application Development course.
+
+## Testing
+
+Run tests with:
+\`\`\`bash
+flutter test
+\`\`\`
+
+Current test coverage includes:
+- Validators (email domain, password strength, field bounds)
+- Status and priority helpers (colors, labels, icons)
+- String and DateTime extensions
+- Incident filter and report stats models
