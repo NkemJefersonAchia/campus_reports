@@ -34,3 +34,13 @@ abstract final class AppColors {
   // ── Semantic ──
   static const Color destructive = Color(0xFFFF3B30);
 }
+
+extension AppColorScheme on AppColors {
+  static Color accent(Brightness brightness) =>
+      brightness == Brightness.light ? AppColors.lightAccent : AppColors.darkAccent;
+
+  static Color secondaryLabel(Brightness brightness) =>
+      brightness == Brightness.light
+          ? AppColors.lightSecondaryText
+          : AppColors.darkSecondaryText;
+}
