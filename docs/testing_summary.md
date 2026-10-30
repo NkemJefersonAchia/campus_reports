@@ -75,3 +75,11 @@
 - FormFieldLabel, ToggleOption, AdaptiveBackButton
 - IncidentFilter model, ReportStats model, ThemeMode provider
 - Bottom sheet helper, responsive breakpoints
+
+## Day 8 Updates (Oct 30)
+
+- Added `validators_test.dart` with email domain, password strength, name bounds, and title length tests
+- Updated `priority_helpers_test.dart` to cover low priority and icon mapping
+- Updated `status_helpers_test.dart` to verify named color constants and status icons
+- Updated `string_extensions_test.dart` with wordCount and isValidUrl tests
+- Updated `date_extensions_test.dart` with isYesterday, isThisWeek, smartDate tests
