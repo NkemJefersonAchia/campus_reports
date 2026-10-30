@@ -16,6 +16,8 @@ abstract final class Validators {
   static String? password(String? value) {
     if (value == null || value.trim().isEmpty) return 'Password is required';
     if (value.length < 8) return 'Password must be at least 8 characters';
+    if (!RegExp(r'[A-Z]').hasMatch(value)) return 'Include at least one uppercase letter';
+    if (!RegExp(r'[0-9]').hasMatch(value)) return 'Include at least one number';
     return null;
   }
 
@@ -28,6 +30,7 @@ abstract final class Validators {
   static String? fullName(String? value) {
     if (value == null || value.trim().isEmpty) return 'Full name is required';
     if (value.trim().length < 2) return 'Name is too short';
+    if (value.trim().length > 50) return 'Name is too long';
     return null;
   }
 
