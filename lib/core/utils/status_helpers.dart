@@ -19,14 +19,29 @@ String statusDisplayName(String status) {
 Color statusColor(String status) {
   switch (status) {
     case 'Submitted':
-      return Colors.orange;
+      return AppColors.statusSubmitted;
     case 'In Progress':
-      return AppColors.accent;
+      return AppColors.statusInProgress;
     case 'Resolved':
-      return Colors.green;
+      return AppColors.statusResolved;
     case 'Rejected':
-      return AppColors.secondaryLabel;
+      return AppColors.statusRejected;
     default:
-      return AppColors.secondaryLabel;
+      return AppColors.statusRejected;
+  }
+}
+
+IconData statusIcon(String status) {
+  switch (status) {
+    case 'Submitted':
+      return Icons.schedule_rounded;
+    case 'In Progress':
+      return Icons.autorenew_rounded;
+    case 'Resolved':
+      return Icons.check_circle_outline_rounded;
+    case 'Rejected':
+      return Icons.cancel_outlined;
+    default:
+      return Icons.help_outline_rounded;
   }
 }
