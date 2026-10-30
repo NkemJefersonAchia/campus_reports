@@ -12,4 +12,9 @@ extension StringCasing on String {
 
   String truncate(int maxLength) =>
       length <= maxLength ? this : '${substring(0, maxLength)}...';
+
+  int get wordCount => trim().isEmpty ? 0 : trim().split(RegExp(r'\s+')).length;
+
+  bool get isValidUrl =>
+      Uri.tryParse(this)?.hasAbsolutePath ?? false;
 }
