@@ -31,8 +31,17 @@ abstract final class AppColors {
   static const Color statusResolved = Color(0xFF30D158);
   static const Color statusRejected = Color(0xFF8E8E93);
 
+  // ── Priority ──
+  static const Color priorityUrgent = Color(0xFFFF3B30);
+  static const Color priorityHigh = Color(0xFFFF9F0A);
+  static const Color priorityNormal = Color(0xFF0A84FF);
+  static const Color priorityLow = Color(0xFF8E8E93);
+
   // ── Semantic ──
   static const Color destructive = Color(0xFFFF3B30);
+  static const Color success = Color(0xFF30D158);
+  static const Color warning = Color(0xFFFF9F0A);
+  static const Color info = Color(0xFF0A84FF);
 }
 
 extension AppColorScheme on AppColors {
