@@ -32,6 +32,23 @@ class NotificationRepository {
         .update({'isRead': true});
   }
 
+  Future<void> deleteNotification(String notificationId) async {
+    await _firestore.collection('notifications').doc(notificationId).delete();
+  }
+
+  Future<void> deleteAllRead(String userId) async {
+    final batch = _firestore.batch();
+    final read = await _firestore
+        .collection('notifications')
+        .where('userId', isEqualTo: userId)
+        .where('isRead', isEqualTo: true)
+        .get();
+    for (final doc in read.docs) {
+      batch.delete(doc.reference);
+    }
+    await batch.commit();
+  }
+
   Future<void> markAllAsRead(String userId) async {
     final batch = _firestore.batch();
     final unread = await _firestore
