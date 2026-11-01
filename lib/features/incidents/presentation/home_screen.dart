@@ -47,10 +47,14 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(width: 12),
                     Stack(
                       children: [
-                        IconButton(
+                        Semantics(
+                        label: 'Notifications',
+                        button: true,
+                        child: IconButton(
                           icon: Icon(Icons.notifications_none, size: 26, color: primaryText),
                           onPressed: () => context.go('/notifications'),
                         ),
+                      ),
                         if ((unreadCount.valueOrNull ?? 0) > 0)
                           Positioned(
                             right: 8,
@@ -66,17 +70,21 @@ class HomeScreen extends ConsumerWidget {
                           ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () => context.go('/profile'),
-                      child: CircleAvatar(
-                        radius: 18,
-                        backgroundColor: bgSecondary,
-                        child: Text(
-                          user?.initials ?? '?',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: primaryText,
+                    Semantics(
+                      label: 'Profile',
+                      button: true,
+                      child: GestureDetector(
+                        onTap: () => context.go('/profile'),
+                        child: CircleAvatar(
+                          radius: 18,
+                          backgroundColor: bgSecondary,
+                          child: Text(
+                            user?.initials ?? '?',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: primaryText,
+                            ),
                           ),
                         ),
                       ),
@@ -90,7 +98,10 @@ class HomeScreen extends ConsumerWidget {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(24, 28, 24, 0),
-                child: GestureDetector(
+                child: Semantics(
+                  label: 'Create new incident report',
+                  button: true,
+                  child: GestureDetector(
                   onTap: () => context.push('/new-report'),
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -111,6 +122,7 @@ class HomeScreen extends ConsumerWidget {
                       ],
                     ),
                   ),
+                ),
                 ),
               ),
             ),
