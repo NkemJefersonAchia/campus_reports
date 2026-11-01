@@ -52,6 +52,23 @@ abstract final class AppTypography {
         height: 1.4,
       );
 
+  static TextStyle overline(Color color) => TextStyle(
+        fontFamily: _fontFamily,
+        fontSize: 11,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.8,
+        color: color,
+        height: 1.4,
+      );
+
+  static TextStyle footnote(Color color) => TextStyle(
+        fontFamily: _fontFamily,
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        color: color,
+        height: 1.3,
+      );
+
   static TextStyle buttonText = const TextStyle(
         fontFamily: _fontFamily,
         fontSize: 17,
