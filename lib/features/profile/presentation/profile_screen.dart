@@ -27,12 +27,15 @@ class ProfileScreen extends ConsumerWidget {
             children: [
               const SizedBox(height: 24),
               // Avatar
-              CircleAvatar(
-                radius: 40,
-                backgroundColor: bgSecondary,
-                child: Text(
-                  user?.initials ?? '?',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, color: primaryText),
+              Semantics(
+                label: '${user?.fullName ?? "User"} profile avatar',
+                child: CircleAvatar(
+                  radius: 40,
+                  backgroundColor: bgSecondary,
+                  child: Text(
+                    user?.initials ?? '?',
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, color: primaryText),
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
