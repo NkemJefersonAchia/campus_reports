@@ -24,6 +24,11 @@ service cloud.firestore {
           && data.location is string;
     }
 
+    function isValidStatusTransition() {
+      let validStatuses = ['Submitted', 'In Progress', 'Resolved', 'Rejected'];
+      return request.resource.data.status in validStatuses;
+    }
+
     // Users collection
     match /users/{userId} {
       allow read: if isAuthenticated();
@@ -40,7 +45,7 @@ service cloud.firestore {
         isValidIncident();
       allow update: if isAuthenticated() && (
         (resource.data.reporterId == request.auth.uid && resource.data.status == 'Submitted') ||
-        isStaff()
+        (isStaff() && isValidStatusTransition())
       );
       allow delete: if isAuthenticated() &&
         resource.data.reporterId == request.auth.uid &&
