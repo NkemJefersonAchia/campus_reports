@@ -29,6 +29,14 @@ class StatusHistoryEntry {
     );
   }
 
+  bool get hasNote => note != null && note!.isNotEmpty;
+
+  Map<String, dynamic> toJson() => toMap();
+
+  @override
+  String toString() =>
+      'StatusHistoryEntry(status: $status, changedBy: $changedByName, timestamp: $timestamp)';
+
   Map<String, dynamic> toMap() {
     return {
       'status': status,
