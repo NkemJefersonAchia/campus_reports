@@ -13,6 +13,8 @@ abstract final class CategoryIcons {
         return Icons.shield_outlined;
       case 'Sanitation':
         return Icons.cleaning_services_outlined;
+      case 'Network / IT':
+        return Icons.wifi_outlined;
       case 'Other':
         return Icons.more_horiz;
       default:

@@ -14,6 +14,7 @@ abstract final class AppConstants {
     'Electricity',
     'Safety',
     'Sanitation',
+    'Network / IT',
     'Other',
   ];
 
