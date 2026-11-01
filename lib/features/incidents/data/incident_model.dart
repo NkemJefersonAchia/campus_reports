@@ -79,6 +79,21 @@ class IncidentModel {
     };
   }
 
+  Map<String, dynamic> toJson() => toMap();
+
+  Duration? get resolutionTime {
+    if (resolvedAt == null) return null;
+    return resolvedAt!.difference(createdAt);
+  }
+
+  bool get isOverdue =>
+      status != 'Resolved' &&
+      status != 'Rejected' &&
+      DateTime.now().difference(createdAt).inDays > 7;
+
+  @override
+  String toString() => 'IncidentModel(id: $id, title: $title, status: $status)';
+
   IncidentModel copyWith({
     String? status,
     String? assignedTo,
