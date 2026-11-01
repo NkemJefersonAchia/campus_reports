@@ -124,6 +124,19 @@ class IncidentRepository {
     await batch.commit();
   }
 
+  Future<List<IncidentModel>> searchIncidents(String query) async {
+    final normalizedQuery = query.trim().toLowerCase();
+    if (normalizedQuery.isEmpty) return [];
+    final snap = await _incidents.get();
+    return snap.docs
+        .map(IncidentModel.fromFirestore)
+        .where((i) =>
+            i.title.toLowerCase().contains(normalizedQuery) ||
+            i.description.toLowerCase().contains(normalizedQuery) ||
+            i.location.toLowerCase().contains(normalizedQuery))
+        .toList();
+  }
+
   Future<void> deleteIncident(String incidentId) async {
     await _incidents.doc(incidentId).delete();
   }
