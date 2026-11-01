@@ -83,3 +83,34 @@
 - Updated `status_helpers_test.dart` to verify named color constants and status icons
 - Updated `string_extensions_test.dart` with wordCount and isValidUrl tests
 - Updated `date_extensions_test.dart` with isYesterday, isThisWeek, smartDate tests
+
+## Day 10 Updates (Nov 1)
+
+### New Unit Tests
+- `incident_model_test.dart` — Tests for resolutionTime, isOverdue, copyWith, toJson, toString
+- `user_model_test.dart` — Tests for initials, displayName, copyWith, toJson, toString
+- `notification_model_test.dart` — Tests for isRecent, toJson, toMap serialization
+
+### Model Enhancements
+- Added `resolutionTime`, `isOverdue`, `toJson`, `toString` to IncidentModel
+- Added `displayName`, `toJson`, `toString` to UserModel
+- Added `isRecent`, `toJson`, `toString` to NotificationModel
+- Added `hasNote`, `toJson`, `toString` to StatusHistoryEntry
+- Added `fromModels` factory, `resolutionRate`, `open` to ReportStats
+- Added priority filter, `sortBy`, `activeFilterCount` to IncidentFilter
+
+### Feature Additions
+- Network / IT incident category with wifi icon
+- `deleteNotification` and `deleteAllRead` in NotificationRepository
+- Client-side `searchIncidents` in IncidentRepository
+- Firestore error mapper for database exceptions
+
+### Security & Accessibility
+- `isValidStatusTransition` Firestore security rule
+- Semantics labels on home screen interactive elements
+- Semantics label on profile screen avatar
+
+### Design System
+- Priority color constants (urgent/high/normal/low)
+- Semantic colors (success/warning/info)
+- `overline` and `footnote` text styles in AppTypography
