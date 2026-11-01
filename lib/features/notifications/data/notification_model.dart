@@ -19,6 +19,15 @@ class NotificationModel {
     required this.createdAt,
   });
 
+  bool get isRecent =>
+      DateTime.now().difference(createdAt).inHours < 24;
+
+  Map<String, dynamic> toJson() => toMap();
+
+  @override
+  String toString() =>
+      'NotificationModel(id: $id, title: $title, isRead: $isRead)';
+
   factory NotificationModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     return NotificationModel(
