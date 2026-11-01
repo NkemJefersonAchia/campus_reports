@@ -32,6 +32,15 @@ class UserModel {
     return fullName.isNotEmpty ? fullName[0].toUpperCase() : '?';
   }
 
+  String get displayName => department != null && department!.isNotEmpty
+      ? '$fullName · $department'
+      : fullName;
+
+  Map<String, dynamic> toJson() => toMap();
+
+  @override
+  String toString() => 'UserModel(uid: $uid, email: $email, role: $role)';
+
   factory UserModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     return UserModel(
