@@ -4,15 +4,15 @@ import '../theme/app_colors.dart';
 Color priorityColor(String priority) {
   switch (priority.toLowerCase()) {
     case 'urgent':
-      return AppColors.destructive;
+      return AppColors.priorityUrgent;
     case 'high':
-      return Colors.orange;
+      return AppColors.priorityHigh;
     case 'normal':
-      return AppColors.statusInProgress;
+      return AppColors.priorityNormal;
     case 'low':
-      return AppColors.statusResolved;
+      return AppColors.priorityLow;
     default:
-      return AppColors.statusRejected;
+      return AppColors.priorityLow;
   }
 }
 
