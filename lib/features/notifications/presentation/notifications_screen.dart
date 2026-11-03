@@ -72,40 +72,53 @@ class NotificationsScreen extends ConsumerWidget {
                                     ? const BorderRadius.vertical(bottom: Radius.circular(14))
                                     : null,
                           ),
-                          child: ListTile(
-                            leading: Container(
-                              width: 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: notif.isRead ? Colors.transparent : accent,
-                              ),
+                          child: Dismissible(
+                            key: ValueKey(notif.id),
+                            direction: DismissDirection.endToStart,
+                            background: Container(
+                              alignment: Alignment.centerRight,
+                              padding: const EdgeInsets.only(right: 20),
+                              color: AppColors.destructive,
+                              child: const Icon(Icons.delete_outline, color: Colors.white),
                             ),
-                            title: Text(
-                              notif.title,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: notif.isRead ? FontWeight.w400 : FontWeight.w600,
-                                color: primaryText,
-                              ),
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(notif.body, style: TextStyle(fontSize: 14, color: secondaryText)),
-                                const SizedBox(height: 2),
-                                Text(
-                                  TimeHelpers.relativeTime(notif.createdAt),
-                                  style: AppTypography.footnote(secondaryText),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              if (!notif.isRead) {
-                                ref.read(notificationRepositoryProvider).markAsRead(notif.id);
-                              }
-                              context.push('/incident/${notif.incidentId}');
+                            onDismissed: (_) {
+                              ref.read(notificationRepositoryProvider).deleteNotification(notif.id);
                             },
+                            child: ListTile(
+                              leading: Container(
+                                width: 8,
+                                height: 8,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: notif.isRead ? Colors.transparent : accent,
+                                ),
+                              ),
+                              title: Text(
+                                notif.title,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: notif.isRead ? FontWeight.w400 : FontWeight.w600,
+                                  color: primaryText,
+                                ),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(notif.body, style: TextStyle(fontSize: 14, color: secondaryText)),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    TimeHelpers.relativeTime(notif.createdAt),
+                                    style: AppTypography.footnote(secondaryText),
+                                  ),
+                                ],
+                              ),
+                              onTap: () {
+                                if (!notif.isRead) {
+                                  ref.read(notificationRepositoryProvider).markAsRead(notif.id);
+                                }
+                                context.push('/incident/${notif.incidentId}');
+                              },
+                            ),
                           ),
                         ),
                       );
