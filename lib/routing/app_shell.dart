@@ -185,7 +185,11 @@ class _TabItem extends StatelessWidget {
     final inactiveColor = isLight ? AppColors.lightTertiaryText : AppColors.darkTertiaryText;
     final color = isActive ? activeColor : inactiveColor;
 
-    return GestureDetector(
+    return Semantics(
+      label: '$label tab${badge > 0 ? ", $badge unread" : ""}',
+      button: true,
+      selected: isActive,
+      child: GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: SizedBox(
@@ -224,6 +228,7 @@ class _TabItem extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 }
