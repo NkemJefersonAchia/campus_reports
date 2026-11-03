@@ -32,6 +32,13 @@ class UserModel {
     return fullName.isNotEmpty ? fullName[0].toUpperCase() : '?';
   }
 
+  String get memberSince {
+    final months = DateTime.now().difference(createdAt).inDays ~/ 30;
+    if (months < 1) return 'Member since this month';
+    if (months == 1) return 'Member for 1 month';
+    return 'Member for $months months';
+  }
+
   String get displayName => department != null && department!.isNotEmpty
       ? '$fullName · $department'
       : fullName;
