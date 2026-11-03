@@ -113,7 +113,7 @@ class _IncidentDetailScreenState extends ConsumerState<IncidentDetailScreen> {
 
         final isOwner = currentUser?.uid == incident.reporterId;
         final isStaff = currentUser?.isStaff ?? false;
-        final canEdit = isOwner && incident.status == 'Submitted';
+        final canEdit = isOwner && incident.isEditable;
         _newStatus ??= incident.status;
 
         return Scaffold(
