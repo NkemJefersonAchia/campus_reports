@@ -114,3 +114,24 @@
 - Priority color constants (urgent/high/normal/low)
 - Semantic colors (success/warning/info)
 - `overline` and `footnote` text styles in AppTypography
+
+## Day 11 Updates (Nov 3)
+
+### New Unit Tests
+- Expanded `report_stats_test.dart` with `fromModels` factory, `open` getter, `resolutionRate` percentage, zero-total guard, and empty-list edge case
+
+### Enhancements
+- `memberSince` label displayed on profile screen
+- `overline` style applied to filter sheet section headers
+- `footnote` style applied to notification timestamps
+- Staff dashboard refactored to use `ReportStats.fromModels`
+- `searchIncidents` Riverpod provider added for reactive search
+- Swipe-to-delete on notification items via `Dismissible`
+- `cardHover` and `modal` shadow presets in AppShadows
+- Expanded AppBreakpoints with `isTablet`, `isDesktop`, `contentMaxWidth`
+- Layout dimension constants (bottomNavHeight, touchTarget, avatarRadius)
+- `statusNote` validator
+- `waitForConnection` retry helper
+- Rejected status option in staff incident controls
+- Firestore rule: allow notification deletes for owner, restrict update to `isRead`
+- Semantics labels on bottom navigation tabs
