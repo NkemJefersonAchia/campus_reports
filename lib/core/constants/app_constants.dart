@@ -42,6 +42,13 @@ abstract final class AppConstants {
 
   static const List<String> priorityLevels = ['Low', 'Normal', 'High', 'Urgent'];
 
+  static const List<String> statusValues = [
+    'Submitted',
+    'In Progress',
+    'Resolved',
+    'Rejected',
+  ];
+
   static const int titleMinLength = 5;
   static const int titleMaxLength = 80;
   static const int descriptionMinLength = 20;
@@ -50,5 +57,9 @@ abstract final class AppConstants {
   static const int maxPhotosPerIncident = 3;
   static const int imageQuality = 80;
 
+  static const int maxNoteLength = 300;
+  static const int recentReportsLimit = 5;
+  static const int notificationsPageSize = 20;
   static const Duration sessionTimeout = Duration(hours: 1);
+  static const Duration debounceDelay = Duration(milliseconds: 400);
 }
