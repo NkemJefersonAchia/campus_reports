@@ -24,4 +24,20 @@ class AppShadows {
           offset: const Offset(0, 1),
         ),
       ];
+
+  static List<BoxShadow> get cardHover => [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.06),
+          blurRadius: 12,
+          offset: const Offset(0, 3),
+        ),
+      ];
+
+  static List<BoxShadow> get modal => [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.12),
+          blurRadius: 24,
+          offset: const Offset(0, 8),
+        ),
+      ];
 }
