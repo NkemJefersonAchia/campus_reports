@@ -86,6 +86,16 @@ class IncidentModel {
     return resolvedAt!.difference(createdAt);
   }
 
+  bool get isOpen => status == 'Submitted' || status == 'In Progress';
+
+  bool get isClosed => status == 'Resolved' || status == 'Rejected';
+
+  bool get isEditable => status == 'Submitted';
+
+  String get fullLocation => locationDetail != null && locationDetail!.isNotEmpty
+      ? '$location · $locationDetail'
+      : location;
+
   bool get isOverdue =>
       status != 'Resolved' &&
       status != 'Rejected' &&
