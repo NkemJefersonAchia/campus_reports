@@ -81,6 +81,11 @@ final notificationsProvider = StreamProvider<List<NotificationModel>>((ref) {
   );
 });
 
+final searchIncidentsProvider =
+    FutureProvider.family<List<IncidentModel>, String>((ref, query) {
+  return ref.watch(incidentRepositoryProvider).searchIncidents(query);
+});
+
 final unreadNotificationCountProvider = StreamProvider<int>((ref) {
   final authState = ref.watch(authStateProvider);
   return authState.when(
