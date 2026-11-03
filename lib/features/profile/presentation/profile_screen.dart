@@ -58,6 +58,10 @@ class ProfileScreen extends ConsumerWidget {
               ],
               const SizedBox(height: 4),
               Text(user?.email ?? '', style: TextStyle(fontSize: 14, color: secondaryText)),
+              if (user != null) ...[
+                const SizedBox(height: 4),
+                Text(user.memberSince, style: TextStyle(fontSize: 13, color: secondaryText)),
+              ],
 
               // Stats
               const SizedBox(height: 24),
