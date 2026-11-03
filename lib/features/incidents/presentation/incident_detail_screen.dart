@@ -248,9 +248,10 @@ class _IncidentDetailScreenState extends ConsumerState<IncidentDetailScreen> {
                         const SizedBox(height: 12),
                         SegmentedButton<String>(
                           segments: const [
-                            ButtonSegment(value: 'Submitted', label: Text('Submitted')),
-                            ButtonSegment(value: 'In Progress', label: Text('In Progress')),
+                            ButtonSegment(value: 'Submitted', label: Text('Open')),
+                            ButtonSegment(value: 'In Progress', label: Text('Active')),
                             ButtonSegment(value: 'Resolved', label: Text('Resolved')),
+                            ButtonSegment(value: 'Rejected', label: Text('Rejected')),
                           ],
                           selected: {_newStatus ?? incident.status},
                           onSelectionChanged: (s) => setState(() => _newStatus = s.first),
