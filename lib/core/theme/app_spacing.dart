@@ -13,4 +13,11 @@ class AppSpacing {
   static const double cardRadius = 12;
   static const double chipRadius = 16;
   static const double buttonHeight = 50;
+  static const double bottomNavHeight = 60;
+  static const double touchTarget = 44;
+  static const double iconSize = 24;
+  static const double avatarRadiusSmall = 18;
+  static const double avatarRadiusLarge = 40;
+  static const double photoPreviewHeight = 200;
+  static const double appBarPhotoHeight = 280;
 }
