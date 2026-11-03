@@ -7,6 +7,7 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/time_helpers.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../../core/widgets/status_dot.dart';
+import '../../incidents/data/report_stats.dart';
 
 
 class StaffDashboardScreen extends ConsumerStatefulWidget {
@@ -55,9 +56,7 @@ class _StaffDashboardScreenState extends ConsumerState<StaffDashboardScreen> {
             SliverToBoxAdapter(
               child: incidentsAsync.when(
                 data: (incidents) {
-                  final submitted = incidents.where((i) => i.status == 'Submitted').length;
-                  final inProgress = incidents.where((i) => i.status == 'In Progress').length;
-                  final resolved = incidents.where((i) => i.status == 'Resolved').length;
+                  final stats = ReportStats.fromModels(incidents);
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
                     child: Container(
@@ -69,11 +68,11 @@ class _StaffDashboardScreenState extends ConsumerState<StaffDashboardScreen> {
                       child: IntrinsicHeight(
                         child: Row(
                           children: [
-                            _Stat(label: 'Open', value: '$submitted', color: AppColors.statusSubmitted, secondaryColor: secondaryText),
+                            _Stat(label: 'Open', value: '${stats.open}', color: AppColors.statusSubmitted, secondaryColor: secondaryText),
                             VerticalDivider(width: 0.5, thickness: 0.5, color: borderColor),
-                            _Stat(label: 'In Progress', value: '$inProgress', color: AppColors.statusInProgress, secondaryColor: secondaryText),
+                            _Stat(label: 'In Progress', value: '${stats.inProgress}', color: AppColors.statusInProgress, secondaryColor: secondaryText),
                             VerticalDivider(width: 0.5, thickness: 0.5, color: borderColor),
-                            _Stat(label: 'Resolved', value: '$resolved', color: AppColors.statusResolved, secondaryColor: secondaryText),
+                            _Stat(label: 'Resolved', value: '${stats.resolved}', color: AppColors.statusResolved, secondaryColor: secondaryText),
                           ],
                         ),
                       ),
