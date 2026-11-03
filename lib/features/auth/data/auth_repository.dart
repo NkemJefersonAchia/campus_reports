@@ -66,6 +66,20 @@ class AuthRepository {
     await _auth.signOut();
   }
 
+  Future<void> updatePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final user = _auth.currentUser;
+    if (user == null || user.email == null) return;
+    final credential = EmailAuthProvider.credential(
+      email: user.email!,
+      password: currentPassword,
+    );
+    await user.reauthenticateWithCredential(credential);
+    await user.updatePassword(newPassword);
+  }
+
   Future<void> deleteAccount() async {
     final uid = _auth.currentUser?.uid;
     if (uid != null) {
