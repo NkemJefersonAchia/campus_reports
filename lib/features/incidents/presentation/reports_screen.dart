@@ -265,7 +265,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text('Filter by Status', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+                Text('FILTER BY STATUS', style: AppTypography.overline(isLight ? AppColors.lightSecondaryText : AppColors.darkSecondaryText)),
                 const SizedBox(height: 12),
                 Wrap(
                   spacing: 8,
@@ -281,7 +281,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
                   }).toList(),
                 ),
                 const SizedBox(height: 20),
-                Text('Filter by Category', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+                Text('FILTER BY CATEGORY', style: AppTypography.overline(isLight ? AppColors.lightSecondaryText : AppColors.darkSecondaryText)),
                 const SizedBox(height: 12),
                 Wrap(
                   spacing: 8,

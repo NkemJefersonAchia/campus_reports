@@ -96,7 +96,7 @@ class NotificationsScreen extends ConsumerWidget {
                                 const SizedBox(height: 2),
                                 Text(
                                   TimeHelpers.relativeTime(notif.createdAt),
-                                  style: TextStyle(fontSize: 12, color: secondaryText),
+                                  style: AppTypography.footnote(secondaryText),
                                 ),
                               ],
                             ),
