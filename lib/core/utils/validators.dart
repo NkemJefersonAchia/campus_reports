@@ -45,6 +45,14 @@ abstract final class Validators {
     return null;
   }
 
+  static String? statusNote(String? value) {
+    if (value == null || value.trim().isEmpty) return null;
+    if (value.trim().length > AppConstants.maxNoteLength) {
+      return 'Note cannot exceed ${AppConstants.maxNoteLength} characters';
+    }
+    return null;
+  }
+
   static String? incidentDescription(String? value) {
     if (value == null || value.trim().isEmpty) return 'Description is required';
     if (value.trim().length < AppConstants.descriptionMinLength) {
