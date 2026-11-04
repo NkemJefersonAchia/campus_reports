@@ -15,10 +15,15 @@ class StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final primaryText = isLight ? AppColors.lightPrimaryText : AppColors.darkPrimaryText;
+    final secondaryText = isLight ? AppColors.lightSecondaryText : AppColors.darkSecondaryText;
+    final bg = isLight ? AppColors.lightSecondaryBackground : AppColors.darkSecondaryBackground;
+
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppColors.secondaryBackground,
+        color: bg,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -28,13 +33,13 @@ class StatCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
-                color: color ?? AppColors.label,
+                color: color ?? primaryText,
               )),
           const SizedBox(height: 4),
           Text(label,
               style: TextStyle(
                 fontSize: 12,
-                color: AppColors.secondaryLabel,
+                color: secondaryText,
               )),
         ],
       ),

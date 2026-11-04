@@ -15,6 +15,9 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final accent = isLight ? AppColors.lightAccent : AppColors.darkAccent;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -24,7 +27,7 @@ class SectionHeader extends StatelessWidget {
           GestureDetector(
             onTap: onAction,
             child: Text(actionText!,
-                style: TextStyle(fontSize: 15, color: AppColors.accent)),
+                style: TextStyle(fontSize: 15, color: accent)),
           ),
       ],
     );

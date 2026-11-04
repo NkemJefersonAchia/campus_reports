@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/app_colors.dart';
+import 'package:campus_reports/core/theme/app_colors.dart';
 
 class ErrorDisplay extends StatelessWidget {
   final String message;
@@ -15,7 +15,7 @@ class ErrorDisplay extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.error_outline, size: 48, color: AppColors.destructive),
+            const Icon(Icons.error_outline, size: 48, color: AppColors.destructive),
             const SizedBox(height: 16),
             Text(message, textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium),

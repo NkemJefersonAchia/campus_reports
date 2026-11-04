@@ -17,6 +17,9 @@ class PhotoPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final bg = isLight ? AppColors.lightBorder : AppColors.darkBorder;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
       child: CachedNetworkImage(
@@ -27,7 +30,7 @@ class PhotoPreview extends StatelessWidget {
         placeholder: (_, _) => ShimmerLoading(height: height),
         errorWidget: (_, _, _) => Container(
           height: height,
-          color: AppColors.tertiaryBackground,
+          color: bg,
           child: const Center(child: Icon(Icons.broken_image_outlined)),
         ),
       ),

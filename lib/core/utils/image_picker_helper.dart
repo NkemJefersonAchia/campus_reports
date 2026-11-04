@@ -26,6 +26,6 @@ class ImagePickerHelper {
   }
 
   static bool isWithinSizeLimit(File file) {
-    return file.lengthSync() <= AppConstants.maxImageSize;
+    return file.lengthSync() <= AppConstants.maxImageSizeBytes;
   }
 }

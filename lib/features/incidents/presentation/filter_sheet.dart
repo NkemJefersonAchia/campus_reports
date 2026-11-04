@@ -10,11 +10,15 @@ class FilterSheet extends StatefulWidget {
   @override
   State<FilterSheet> createState() => _FilterSheetState();
 }
+
 class _FilterSheetState extends State<FilterSheet> {
   late String? _status = widget.selectedStatus;
   late String? _category = widget.selectedCategory;
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final accent = isLight ? AppColors.lightAccent : AppColors.darkAccent;
+
     return Padding(padding: const EdgeInsets.all(20), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Text('Status', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
       const SizedBox(height: 8),
@@ -30,7 +34,7 @@ class _FilterSheetState extends State<FilterSheet> {
         Expanded(child: OutlinedButton(onPressed: () => setState(() { _status = null; _category = null; }), child: const Text('Clear'))),
         const SizedBox(width: 12),
         Expanded(child: FilledButton(onPressed: () { widget.onApply(_status, _category); Navigator.pop(context); },
-            style: FilledButton.styleFrom(backgroundColor: AppColors.accent), child: const Text('Apply'))),
+            style: FilledButton.styleFrom(backgroundColor: accent), child: const Text('Apply'))),
       ]),
       const SizedBox(height: 12),
     ]));

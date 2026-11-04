@@ -15,14 +15,17 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final accent = isLight ? AppColors.lightAccent : AppColors.darkAccent;
+
     return CircleAvatar(
       radius: size / 2,
-      backgroundColor: AppColors.accent.withOpacity(0.15),
+      backgroundColor: accent.withValues(alpha: 0.15),
       backgroundImage: photoUrl != null ? NetworkImage(photoUrl!) : null,
       child: photoUrl == null
           ? Text(initials,
               style: TextStyle(
-                color: AppColors.accent,
+                color: accent,
                 fontSize: size * 0.36,
                 fontWeight: FontWeight.w600,
               ))

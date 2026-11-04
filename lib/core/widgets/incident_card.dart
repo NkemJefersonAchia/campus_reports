@@ -24,12 +24,16 @@ class IncidentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final secondaryText = isLight ? AppColors.lightSecondaryText : AppColors.darkSecondaryText;
+    final bg = isLight ? AppColors.lightSecondaryBackground : AppColors.darkSecondaryBackground;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.cardPadding),
         decoration: BoxDecoration(
-          color: AppColors.secondaryBackground,
+          color: bg,
           borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
         ),
         child: Row(
@@ -44,9 +48,8 @@ class IncidentCard extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.w600)),
                   const SizedBox(height: 4),
-                  Text('$category · ${relativeTime(createdAt)}',
-                      style: TextStyle(
-                          fontSize: 13, color: AppColors.secondaryLabel)),
+                  Text('$category · ${TimeHelpers.relativeTime(createdAt)}',
+                      style: TextStyle(fontSize: 13, color: secondaryText)),
                 ],
               ),
             ),

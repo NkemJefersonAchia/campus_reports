@@ -15,6 +15,9 @@ class FormFieldLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final secondaryText = isLight ? AppColors.lightSecondaryText : AppColors.darkSecondaryText;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,10 +27,10 @@ class FormFieldLabel extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.secondaryLabel,
+                  color: secondaryText,
                 )),
             if (isRequired)
-              Text(' *',
+              const Text(' *',
                   style: TextStyle(fontSize: 14, color: AppColors.destructive)),
           ],
         ),

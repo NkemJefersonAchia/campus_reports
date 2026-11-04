@@ -19,14 +19,17 @@ class ToggleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final accent = isLight ? AppColors.lightAccent : AppColors.darkAccent;
+
     return ListTile(
-      leading: Icon(icon, color: AppColors.accent),
+      leading: Icon(icon, color: accent),
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       trailing: Switch.adaptive(
         value: value,
         onChanged: onChanged,
-        activeColor: AppColors.accent,
+        activeColor: accent,
       ),
       contentPadding: EdgeInsets.zero,
     );

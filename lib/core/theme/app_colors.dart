@@ -43,13 +43,3 @@ abstract final class AppColors {
   static const Color warning = Color(0xFFFF9F0A);
   static const Color info = Color(0xFF0A84FF);
 }
-
-extension AppColorScheme on AppColors {
-  static Color accent(Brightness brightness) =>
-      brightness == Brightness.light ? AppColors.lightAccent : AppColors.darkAccent;
-
-  static Color secondaryLabel(Brightness brightness) =>
-      brightness == Brightness.light
-          ? AppColors.lightSecondaryText
-          : AppColors.darkSecondaryText;
-}
