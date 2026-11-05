@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers.dart';
+import '../../../core/providers/theme_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/inset_grouped_section.dart';
-
-final _themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.system);
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -96,7 +95,7 @@ class ProfileScreen extends ConsumerWidget {
                     leading: Icon(Icons.palette_outlined, color: primaryText),
                     title: Text('Appearance', style: TextStyle(color: primaryText)),
                     trailing: DropdownButton<ThemeMode>(
-                      value: ref.watch(_themeModeProvider),
+                      value: ref.watch(themeModeProvider),
                       underline: const SizedBox.shrink(),
                       items: const [
                         DropdownMenuItem(value: ThemeMode.system, child: Text('System')),
@@ -104,7 +103,7 @@ class ProfileScreen extends ConsumerWidget {
                         DropdownMenuItem(value: ThemeMode.dark, child: Text('Dark')),
                       ],
                       onChanged: (mode) {
-                        if (mode != null) ref.read(_themeModeProvider.notifier).state = mode;
+                        if (mode != null) ref.read(themeModeProvider.notifier).state = mode;
                       },
                     ),
                   ),
