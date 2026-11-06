@@ -63,7 +63,9 @@ lib/
 3. Set up a Firebase project and add your own `google-services.json` (Android) or `GoogleService-Info.plist` (iOS)
 4. Run `flutter run --no-enable-impeller` (Impeller may cause a black screen on some emulators)
 
-## Security
+## Firebase Setup
+
+### Firestore Security Rules
 
 Access control is enforced at two levels:
 
@@ -71,6 +73,20 @@ Access control is enforced at two levels:
 - Server side: Firestore security rules validate every read and write, enforce role checks, and restrict field modifications
 
 The Firestore rules are in `firestore.rules` and the Storage rules are in `storage.rules`.
+
+### Composite Indexes
+
+Firestore requires composite indexes for queries that combine a `where` filter with an `orderBy` on a different field. The following indexes are configured in the Firebase Console:
+
+| Collection      | Fields                                          | Query Scope |
+|-----------------|------------------------------------------------|-------------|
+| `incidents`     | `reporterId` (Ascending), `createdAt` (Descending) | Collection  |
+| `notifications` | `userId` (Ascending), `createdAt` (Descending)     | Collection  |
+| `notifications` | `userId` (Ascending), `isRead` (Ascending)         | Collection  |
+
+- The `incidents` index supports querying a user's own reports sorted by date.
+- The first `notifications` index supports loading a user's notifications in reverse chronological order.
+- The second `notifications` index supports counting unread notifications for the badge indicator.
 
 ## Testing
 
